@@ -1,21 +1,21 @@
 # Manage the transit secrets engine
-path "transit/keys/<%= @config['app']['name'].downcase %>_*" {
+path "transit/keys/opendax_*" {
   capabilities = ["create", "read", "list"]
 }
 # Encrypt engines secrets
-path "transit/encrypt/<%= @config['app']['name'].downcase %>_engines_*" {
+path "transit/encrypt/opendax_engines_*" {
   capabilities = ["create", "read", "update"]
 }
 # Encrypt wallets secrets
-path "transit/encrypt/<%= @config['app']['name'].downcase %>_wallets_*" {
+path "transit/encrypt/opendax_wallets_*" {
   capabilities = ["create", "read", "update"]
 }
 # Encrypt beneficiaries data
-path "transit/encrypt/<%= @config['app']['name'].downcase %>_beneficiaries_*" {
+path "transit/encrypt/opendax_beneficiaries_*" {
   capabilities = [ "create", "read", "update" ]
 }
 # Decrypt beneficiaries data
-path "transit/decrypt/<%= @config['app']['name'].downcase %>_beneficiaries_*" {
+path "transit/decrypt/opendax_beneficiaries_*" {
   capabilities = [ "create", "read", "update" ]
 }
 # Renew tokens
@@ -27,6 +27,6 @@ path "auth/token/lookup" {
   capabilities = ["update"]
 }
 # Verify an otp code
-path "totp/code/<%= @config['app']['name'].downcase %>_*" {
+path "totp/code/opendax_*" {
   capabilities = ["update"]
 }

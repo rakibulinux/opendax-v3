@@ -1,25 +1,25 @@
 # View the kv v2 data
-path "secret/data/<%= @config['app']['name'].downcase %>/*" {
+path "secret/data/opendax/*" {
   capabilities = ["read", "list"]
 }
 
 # View the kv v2 metadata
-path "secret/metadata/<%= @config['app']['name'].downcase %>/*" {
+path "secret/metadata/opendax/*" {
   capabilities = ["read", "list"]
 }
 
 # Manage the transit secrets engine
-path "transit/keys/<%= @config['app']['name'].downcase %>_kaigara_*" {
+path "transit/keys/opendax_kaigara_*" {
   capabilities = ["create", "read", "list", "update"]
 }
 
 # Encrypt secrets data
-path "transit/encrypt/<%= @config['app']['name'].downcase %>_kaigara_*" {
+path "transit/encrypt/opendax_kaigara_*" {
   capabilities = ["create", "read", "update"]
 }
 
 # Decrypt secrets data
-path "transit/decrypt/<%= @config['app']['name'].downcase %>_kaigara_*" {
+path "transit/decrypt/opendax_kaigara_*" {
   capabilities = ["create", "read", "update"]
 }
 

@@ -1,16 +1,16 @@
-path "transit/<%= @config['app']['name'].downcase %>_*" {
+path "transit/opendax_*" {
   capabilities = [ "read" ]
 }
 # Decrypt secrets
-path "transit/decrypt/<%= @config['app']['name'].downcase %>_*" {
+path "transit/decrypt/opendax_*" {
   capabilities = [ "create", "update" ]
 }
 # Use key for signing
-path "transit/sign/<%= @config['app']['name'].downcase %>_*" {
+path "transit/sign/opendax_*" {
   capabilities = ["update"]
 }
 # Create transit key
-path "transit/keys/<%= @config['app']['name'].downcase %>_*" {
+path "transit/keys/opendax_*" {
   capabilities = ["create"]
 }
 # Renew tokens
