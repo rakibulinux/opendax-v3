@@ -1,0 +1,16 @@
+version: '3.6'
+
+services:
+  superset:
+    image: "amancevice/superset:0.28.1"
+    restart: always
+    volumes:
+      - superset_db:/var/lib/superset
+    labels:
+      - "traefik.http.routers.superset-siamchain.rule=Host(`superset.siamchain.com`)"
+      - "traefik.http.services.superset-siamchain.loadbalancer.server.port=8088"
+      - "traefik.enable=true"
+      - "traefik.http.routers.superset-siamchain.entrypoints=websecure"
+
+volumes:
+  superset_db:

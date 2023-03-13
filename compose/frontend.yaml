@@ -1,0 +1,28 @@
+version: '3.6'
+
+services:
+  frontend:
+    restart: always
+    image: "registry.gitlab.com/rakibulinux/baseapp:latest"
+    volumes:
+      - ../config/frontend/env.js:/usr/share/nginx/html/config/env.js
+    labels:
+      - "traefik.http.routers.frontend-siamchain.rule=Host(`www.siamchain.com`) && PathPrefix(`/`)"
+      - "traefik.enable=true"
+      - "traefik.http.services.frontend-siamchain.loadbalancer.server.port=3000"
+      - "traefik.http.routers.frontend-siamchain.entrypoints=websecure"
+      - "traefik.http.routers.frontend-siamchain.tls=true"
+      - "traefik.http.routers.frontend-siamchain.tls.certresolver=myresolver"
+
+  tower:
+    restart: always
+    image: "quay.io/openware/tower:2.6.66"
+    volumes:
+      - ../config/frontend/tower.js:/home/app/env.js
+    labels:
+      - "traefik.http.routers.tower-siamchain.rule=Host(`www.siamchain.com`) && PathPrefix(`/tower`)"
+      - "traefik.enable=true"
+      - "traefik.http.services.tower-siamchain.loadbalancer.server.port=8080"
+      - "traefik.http.routers.tower-siamchain.entrypoints=websecure"
+      - "traefik.http.routers.tower-siamchain.tls=true"
+      - "traefik.http.routers.tower-siamchain.tls.certresolver=myresolver"
